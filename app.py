@@ -1,4 +1,3 @@
-"""Streamlit app to summarize text, e.g. blog articles"""
 
 # Import from standard library
 import logging
@@ -17,7 +16,7 @@ logging.basicConfig(format="\n%(asctime)s\n%(message)s", level=logging.INFO, for
 
 # Define functions
 def summarize(text: str):
-    """Summarize text."""
+    """Summarize text. - Dharssini and Prasannapathi - Data Mining Work"""
     summary_prompt = "\n\nSummarize the main points from the above article in less than 120 characters:\n\n"
     openai = oai.Openai()
     flagged = openai.moderate(text)
@@ -41,8 +40,7 @@ st.title("Summarize web content")
 st.markdown(
     """This mini-app scrapes the paragraphs from a web page,
     e.g. a blog post, and summarizes them into a Tweet-sized
-    statement using OpenAI's GPT-3 based [Davinci model](https://beta.openai.com/docs/models/overview). You can find the code on [GitHub](https://github.com/kinosal/summarizer) and the author on [Twitter](https://twitter.com/kinosal)."""
-)
+    statement using OpenAI's GPT-3 based [Davinci model](https://beta.openai.com/docs/models/overview))
 
 selectbox = st.selectbox("Raw text or URL source", ("URL", "Raw text"))
 
@@ -113,27 +111,4 @@ elif selectbox == "URL":
 if st.session_state.error:
     st.error(st.session_state.error)
 
-if st.session_state.summary:
-    st.markdown("""---""")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown(
-            "**Other Streamlit apps by [@kinosal](https://twitter.com/kinosal)**"
-        )
-        st.markdown("[Tweet Generator](https://tweets.streamlit.app)")
-        st.markdown("[Twitter Wrapped](https://twitter-likes.streamlit.app)")
-        st.markdown("[Code Translator](https://english-to-code.streamlit.app)")
-        st.markdown("[PDF Analyzer](https://pdf-keywords.streamlit.app)")
-    with col2:
-        st.write("If you like this app, please consider to")
-        components.html(
-            """
-                <form action="https://www.paypal.com/donate" method="post" target="_top">
-                <input type="hidden" name="hosted_button_id" value="8JJTGY95URQCQ" />
-                <input type="image" src="https://pics.paypal.com/00/s/MDY0MzZhODAtNGI0MC00ZmU5LWI3ODYtZTY5YTcxOTNlMjRm/file.PNG" height="35" border="0" name="submit" title="Donate with PayPal" alt="Donate with PayPal button" />
-                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                </form>
-            """,
-            height=45,
-        )
-        st.write("so I can keep it alive. Thank you!")
+    
